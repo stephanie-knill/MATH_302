@@ -1,3 +1,3 @@
 #Assignment 4
 
-Discrete: Conditional Probability & Distributions
+Discrete: conditional probability & distributions
