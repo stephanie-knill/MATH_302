@@ -1,3 +1,3 @@
 #Assignment 1
 
-Introductory discrete probability
+Discrete: probability distributions
