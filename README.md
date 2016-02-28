@@ -1,2 +1,2 @@
 # MATH_302
-Introduction to Probability  
+Introduction to Probability
