@@ -1,0 +1,415 @@
+% ======================= Pre-Amble =========================
+      
+%Format
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format 
+                     						%imports package {article} and specify option(s) [11pt, oneside]
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots. 
+    \geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+    %\geometry{landscape}                		% Activate for rotated page geometry
+
+\usepackage[parfill]{parskip}    		        % Activate to begin paragraphs with an empty line rather than an indent
+
+    %Colours
+    \usepackage{graphicx, subcaption}
+    \usepackage[usenames, dvipsnames]{color}     % font colour:    \textcolor{<colour>}{text}
+          									%highlight text:  \colorbox{<color>}{text}
+    \usepackage{soul}						%highlight text: \hl{}     %only  yellow								
+    									%list of colours: https://www.sharelatex.com/learn/Using_colours_in_LaTeX
+    									
+    %Bullets
+    \usepackage{enumerate}     %specify type of enumeration: \being{enumerate}[<type of enumeration>]
+    
+    %Footnote Spacing
+    \setlength{\footnotesep}{0.4cm}                  %specify spacing b/w footnotes
+    \setlength{\skip\footins}{0.6cm}                    % space b/w footnotes and textbody
+
+
+%Mattematics
+    %American Mathematics Society packages
+    \usepackage{amsmath}	   %math
+    \usepackage{amssymb}       %symbols
+    \usepackage{amsthm}          %theorems
+
+    %QED
+    \newcommand*{\QEDA}{\hfill\ensuremath{\blacksquare}}         %make qed filled square:    \QEDA
+    %\newcommand*{\QEDB}{\hfill\ensuremath{\square}}               %make qed empty square: \QEDB 
+
+
+%Figures
+\usepackage{caption}
+\captionsetup[figure]{labelfont=bf}    %make figure labels boldface
+\captionsetup[table]{labelfont=bf}     %make table labels boldface
+
+\usepackage[hidelinks]{hyperref}                % Allows for clickable references
+
+    %Tables
+    \usepackage[none]{hyphenat}                    % Stops breaking-up words in a table (i.e. no hyphens)                                                             
+    
+    \usepackage{array}   
+    \newcolumntype{x}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}       %center fixed column width: x{<len>}                      
+    \newcolumntype{$}{>{\global\let\currentrowstyle\relax}}                                                   % let us apply things (e.g. bold/italicize) to entire row            
+    \newcolumntype{^}{>{\currentrowstyle}}
+    \newcommand{\rowstyle}[1]{\gdef\currentrowstyle{#1} #1\ignorespaces}
+    
+    %Images
+    \graphicspath{ {images/} }                          %directory that your images are located in within your current directory
+    
+    %Diagrams
+    \usepackage[latin1]{inputenc}
+    \usepackage{tikz}
+    \usepackage{tkz-berge}
+    \usetikzlibrary{shapes,arrows}
+
+
+%Bibliography
+\usepackage[numbers,sort&compress]{natbib}   %for multiple references: sorts  (i.e. [1,2] NOT [2, 1] )
+                                           				  %                                     compresses (i.e. [1-3] )
+\usepackage[nottoc]{tocbibind}                            %add bibliography to table of contents
+
+
+%Miscellaneous
+\usepackage{dirtytalk}    %quotations: use \say  
+
+
+%================== Header & Footer =========================
+\usepackage{fancyhdr}
+\usepackage{lastpage}      %ensures you can reference LastPage (i.e. Page 2 of 10)
+
+\renewcommand{\headrulewidth}{0.4pt}		%Decorative Header line: thickness={0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}		%Decorative Footer line: thickness={0.4pt}
+
+\setlength{\headheight}{13.6pt} 		%space b/w top of page & header
+\setlength{\headsep}{0.3in}		%space b/w page header and body
+
+%Make Header & Footer    
+\pagestyle{fancy}
+    \lhead{Stephanie Knill} 		% controls the left corner of the header
+    \chead{} 					% controls the center of the header
+    \rhead{} 					% controls the right corner of the header
+    \lfoot{} 					% controls the left corner of the footer
+    \cfoot{Page~\thepage\ of \pageref{LastPage}} 				% controls the center of the footer
+    												%Page~\thepage\  if just want Page x
+    \rfoot{}			 		% controls the right corner of the footer
+
+% =============================== Document ===================================
+\begin{document}
+
+% Title Page
+\title{MATH 302 --- Assignment 3 \\
+\line(1,0){360} \\              %(slope x, y){length of line}
+}
+\author{
+Stephanie Knill \\
+54882113 \\
+Due: February 3, 2016}
+
+\date{}                   % Activate:  display a given date (e.g. {August 4} ) or no date (empty {} )
+                                    %No activate: display current date
+\maketitle
+
+%\thispagestyle{empty}                   %Remove header from this (first) page. Change empty -> plain to keep numbering
+%								-> Doesn't matter in this case (b/c title page)
+%\cleardoublepage
+
+
+% ================= Questions ================
+
+\section*{Question 1: Section 3.2 \#20}
+
+For a six-card hand dealt from an ordinary deck of cards, we have number of cards $n=52$ and cards dealt $k=6$. Therefore we can compute the following probabilities:
+\begin{enumerate}[\quad (a)]
+	\item Probability all 6 cards same suit
+	\begin{align*}
+		P(\text{all hearts}) & = \frac{{13 \choose 6}}{{52 \choose 6}} \\
+		& = \frac{\frac{13!}{6!\cdot7!}}{\frac{52!}{6! \cdot 46!}} \\
+		& = \frac{33}{391,510} \\
+		& \approx 8.43 \cdot 10^{-5}
+	\end{align*}
+	
+	\item Probability of 3 Aces, 2 Kings, 1 Queen
+	\begin{align*}
+		P(\text{3A, 2K, 1Q}) & = \frac{{4 \choose 3}\cdot {4 \choose 2} \cdot {4 \choose 1}}{{52 \choose 6}} \\
+		& = \frac{12}{2,544,815} \\
+		& \approx 4.72 \cdot 10^-6
+	\end{align*}
+	
+	\item Probability of 3 same suit and 3 another suit
+	\begin{align*}
+		P(3S_1, \; 3S_2) & = \frac{{4 \choose 2}\cdot {13 \choose 3} \cdot {13 \choose 3}}    {{52 \choose 6}} \\
+		& = \frac{4719}{195,755} \\
+		& \approx 0.0241
+	\end{align*}
+\end{enumerate}
+
+
+
+\section*{Question 2}
+
+For $M \geq 1$ and $n_1, \ldots , n_m$ positive integers, with the notation $n$ for the sum $n_1 + \cdots + n_m$ denoted by $C[n_1 , \ldots , n_m]$ the number of ways to place $n$ balls (of labels $1,2, \ldots , n$) into $m$ urns $U_1, \ldots , U_m$ such that there are $n_1$ balls falling into $U_1, \ldots , n_m$ balls falling into $U_m$.
+
+\begin{enumerate}[\quad (a)]
+	\item For $m=2$, we have $n_1$ balls placed into $U_1$ and $n_2$ balls placed into $U_2$. Therefore the number of combinations for the first urn is given by $C_{n_1}^n$ and the number of combinations for the second urn is given by $C_{n_2}^{n_2}$. Combining these, we have
+	\begin{align*}
+		C[n_1, n_2] & = C_{n_1}^n \cdot C_{n_2}^{n_2} \\
+		& = {n \choose n_1} \cdot 1 \\
+		& = {n \choose n_1}
+	\end{align*}
+	
+	\item Similarly for $m=3$, we the number of combinations for the first urn is given by $C_{n_1}^n$, the number of combinations for the second urn is given by $C_{n_2}^{n-n_1}$, and the number of combinations for the third urn is given by $C_{n_3}^{n-n_1-n_2} = C_{n_3}^{n_3}$. Combining these, we have
+	\begin{align*}
+		C[n_1, n_2, n_3] & = C_{n_1}^n \cdot C_{n_2}^{n_2} \cdot C_{n_3}^{n_3} \\
+		& =  {n \choose n_1} {n-n_1 \choose n_2} \cdot 1\\
+		& = {n \choose n_1} {n-n_1 \choose n_2}\\
+	\end{align*}
+	This simplifies to
+	\begin{align*}
+		C[n_1, n_2, n_3] & = \frac{n!}{n_1! (n-n_1)!} \cdot \frac{(n-n_1)!}{n_2! \cdot (n-n_1-n_2)!} \\
+		& = \frac{n!}{n_1!} \cdot \frac{1}{n_2! \cdot n_3!} \\
+		& = \frac{n!}{n_1! \cdot n_2! \cdot n_3!}
+	\end{align*}
+	
+	\item $C[n_1, n_2, n_3]$ may also be used to find the number of words of length $n$ with letters $a$ appearing $n_1$ times, $b$ appearing $n_2$ times, and $c$ appearing $n_3$ times.
+	
+	Since ${n \choose n_1}$ gives the number of words of length $n$ with $a$ appearing $n_1$ times, ${n-n_1 \choose n_2}$ gives the number of words of length $n$ with $b$ appearing $n_2$ times, and ${n-n_1-n_2 \choose n_3}$ gives the number of words of length $n$ with $c$ appearing $n_3$ times, we can combine these to get
+	\begin{align*}
+		{n \choose n_1} {n-n_1 \choose n_2} {n-n_1-n_2 \choose n_3} & = {n \choose n_1} {n-n_1 \choose n_2} {n_3 \choose n_3}  \\
+		& = {n \choose n_1} {n-n_1 \choose n_2} \\
+		& = C[n_1, n_2, n_3]
+	\end{align*}
+	
+	\item For the word \say{assesses}, we have $n=8$ letters with the letter $a$ appearing $n_1=1$ times, $s$ appearing $n_2=5$ times, and $e$ appearing $n_3=2$ times. Thus we have
+	\begin{align*}
+		C[n_1, n_2, n_3] & = {n \choose n_1} {n-n_1 \choose n_2} \\
+		& = {8 \choose 1} {8-1 \choose5} \\
+		& = 168
+	\end{align*}
+	
+	\item \textbf{Proposition:} $C[n_1, \ldots , n_m] = \frac{n!}{n_1! \cdot \cdots \cdot n_m!}$
+	
+	\textbf{Proof}
+	\begin{align*}
+		C[n_1, \ldots , n_m] & = {n \choose n_1} {n-n_1 \choose n_2} \cdots {n_m \choose n_m} \\
+		& = \frac{n!}{n_1! (n-n_1)!} \cdot \frac{(n-n_1)!}{n_2! (n-n_1-n_2)!} \cdots \frac{(n-n_1- \cdots - n_{m-2})!}{n_{m-1}! (n-n_1- \cdots - n_{m-1})!}  \\
+		& = \frac{n!}{n_1!} \cdot \frac{1}{n_2!} \cdots \frac{1}{n_{m-1}! \cdot n_m!} \\
+		& = \frac{n!}{n_1! \cdots n_m!}
+	\end{align*}
+\end{enumerate}
+
+\section*{Question 3: Section 4.1 \#3}
+A fair die is rolled twice, with a sample space $\Omega = \{1,2,3,4,5,6\}$. Let $E$ be the event that the sum of the faces is $\geq 7$ then we can calculate $P(E | F)$ for different events $F$:
+
+\begin{enumerate}[\quad (a)]
+	\item $F = \{\text{1st die = 4}\}$
+	
+	Here, the 2nd die needs to be $\{4,5,6\}$, thus
+	$$P(E | F) = 3/6 = 1/2$$
+	
+	\item $F = \{\text{1st die = 4}\}$
+	
+	Here, $P(F) = 3/6 = 1/2$. For $P(E \cap F)$, we have 3 cases for the possible outcomes of the 1st die:
+	\begin{itemize}
+		\item \textbf{Case 1:} 1st die is a 4.
+		
+		Then the 2nd die must be $\{4,5,6\}$. Therefore $1/6 \cdot 3/6 = 1/12$.
+		\item \textbf{Case 2:} 1st die is a 5.
+	
+		Then the 2nd die must be $\{3,4,5,6\}$. Therefore $1/6 \cdot 4/6 = 1/9$.
+	
+		\item \textbf{Case 3:} 1st die is a 6.
+	
+		Then the 2nd die must be $\{2,3,4,5,6\}$. Therefore $1/6 \cdot 5/6 = 5/36$.
+	\end{itemize}
+	
+	Adding these up, we have
+	$$P(E \cap F) = 1/12 + 1/9 + 5/36 = 1/3$$
+	
+	Therefore we can now calculate 
+	\begin{align*}
+		P(E | F) & = \frac{P(E \cap F)}{P(F)}\\
+		& = \frac{1/3}{1/2} \\
+		& = 2/3
+	\end{align*}
+	
+	\item $F = \{\text{1st die = 1}\}$
+	
+	Here, there are no possible rolls of the 2nd die that can make the event $E$ true. Thus
+	$$P(E | F) = 0$$
+	
+	\item $F = \{\text{1st die} < 5\} = \{1,2,3,4\}$
+	
+	Here, $P(F) = 4/6 = 2/3$. For $P(E \cap F)$, the 2nd die needs to be $\{4,5,6\}$. Again we will have three cases:
+	$$P(E \cap F) = 1/6\cdot1/6 + 1/6\cdot 2/6 + 1/6 \cdot 3/6 = 1/6$$
+	
+	Therefore we can now calculate
+	$$P(E | F) = \frac{1/6}{2/3} = 1/4$$
+\end{enumerate}
+
+\section*{Question 4: Section 4.1 \#9}
+
+For a family of 2 children (with equiprobability of it being a girl or boy) with sample space $\Omega = \{BB, BG, GB, GG\}$, we can compute $P(E | F)$ given various events $E$ and $F$:
+
+\begin{enumerate}[\quad (a)]
+	\item $P(E | F)$, where $E$ is the event that the family has 2 boys and $F$ is the event of having at least one boy.
+	
+	Since  $F = \{BB, BG, GB\}$ we have that 
+	$$P(F) = \frac{|F|}{|\Omega|} = \frac{3}{4}$$
+	
+	likewise we know that $E=\{BB\}$, so we also have
+	$$P(E \cap F) = P(E) = \frac{|E|}{|\Omega|} = \frac{1}{4}$$
+	Therefore we can compute the probability of a family having 2 boys given that it has at least 1 boy as
+	$$P(E | F) = \frac{P(E \cap F)}{P(F)} = \frac{1/4}{3/4} = 1/3$$.
+	
+	\item $P(E | F)$, where $E$ is the event that the family has 2 boys and $F$ is event that the first child is a boy.
+	
+	Since  $F = \{BB, BG\}$ we have that 
+	$$P(F) = \frac{|F|}{|\Omega|} = \frac{2}{4} = \frac{1}{2}$$
+	
+	likewise we know that $E=\{BB\}$, so we also have
+	$$P(E \cap F) = P(E) = \frac{|E|}{|\Omega|} = \frac{1}{4}$$
+	Therefore we can compute the probability of a family having 2 boys given that it has at least 1 boy as
+	$$P(E | F) = \frac{P(E \cap F)}{P(F)} = \frac{1/4}{1/2} = 1/2$$.	
+\end{enumerate}
+
+\section*{Question 5: Section 4.1 \#15}
+
+In a game of bridge with number of cards $n=52$ and $k=13$ cards dealt to each player, we can compute $P(E | F)$ given various events $E$ and $F$:
+
+\begin{enumerate}[\quad (a)]
+	\item $P(E | F)$, where $E$ is the event that your bridge partner has exactly 2 aces and $F$ is the event he/she has at least one ace.
+	
+	To compute the probability of having at least one ace, let us use the Law of Total Probability:
+	\begin{align*}
+		P(F) & = 1 - P(\text{no ace}) \\
+		& = 1 - \frac{{48 \choose 13}}{{52 \choose 13}} \\
+		& =  \frac{14,498}{20,825} 
+	\end{align*}
+	
+	Next the intersection of the two events is given by
+	$$P(E \cap F)  = P(E) = \frac{{4 \choose 2}{48 \choose 11}}{{52 \choose 13}} =  \frac{4,446}{20,825} $$
+
+	Therefore we can compute the probability of your bridge partner has exactly 2 aces given he/she has at least one ace as
+	\begin{align*}
+	P(E | F) & = \frac{P(E \cap F)}{P(F)} \\
+	& = \frac{\frac{4,446}{20,825}}{\frac{14,498}{20,825}} \\
+	& = \frac{2,223}{7,249} \\
+	& \approx 0.307
+	\end{align*}
+	
+	\item $P(E | F)$, where $E$ is the event that your bridge partner has exactly 2 aces and $F$ is the event he/she has ace of spades.
+	
+	To compute the probability of having the ace of spades, we have
+	\begin{align*}
+		P(F) & = \frac{{1 \choose 1}{51 \choose 12}}{{52 \choose 13}} \\
+	\end{align*}
+	
+	Next the intersection of the two events is given by
+	$$P(E \cap F) = \frac{{1 \choose 1}{3 \choose 1}{48 \choose 11}}{{52 \choose 13}}=  \frac{3 \cdot {48 \choose 11}}{{52 \choose 13}}$$
+
+	Therefore we can compute the probability of your bridge partner has exactly 2 aces given he/she has at least one ace as
+	\begin{align*}
+	P(E | F) & = \frac{P(E \cap F)}{P(F)} \\
+	& = \frac{\frac{3 \cdot {48 \choose 11}}{{52 \choose 13}}}{\frac{{1 \choose 1}{51 \choose 12}}{{52 \choose 13}}} \\
+	& = \frac{8,892}{20,825} \\
+	& \approx 0.427
+	\end{align*}
+\end{enumerate}
+
+\section*{Question 6: Section 4.1 \#18}
+
+Let $E$ be the event that test positive, $d_i$ be event that the patient has disease $d_i$,  and $\overline{d_i}$ be event that the patient \textit{does not} have disease $d_i$, for $i \in \{1,2,3\}$. Additionally, we  have the following known probabilities: $P(E \mid d_1) = .8, P(E \mid d_2) = .6, P(E \mid d_2) = .4,$ and $P(d_1) = P(d_2) = P(d_3) = 1/3$. 
+
+Using these, we can calculate $P(d_i \mid E)$, for $i \in \{1,2,3\}$:
+
+For $P(d_1 \mid E)$, we can express it as
+	\begin{align*}
+	P(d_1 \mid E) & = \frac{P(d_1 \cap E)}{P(E)} \\
+	\end{align*}	
+Here, 
+	$$ P(d_1 \cap E) = P(d_1) \cdot P(E \mid d_1) = \frac{1}{3} \cdot \frac{8}{10} = \frac{4}{15}$$
+	
+To find the probability of testing positive, we have
+	\begin{align*}
+		P(E) & = P(d_1 \mid E)\cdot P(d_1) + P(d_2 \mid E)\cdot P(d_2) + P(d_3 \mid E)\cdot P(d_3)  \\
+		& = (8/10 \cdot 1/3) + (6/10 \cdot 1/3) + 4/10 \cdot 1/3) \\
+		& = \frac{3}{5}
+	\end{align*}
+
+
+Plugging these back into $P(d_1 \mid E)$ we now have
+	\begin{align*}
+		P(d_1 \mid E) & = \frac{4/15}{3/5} = \frac{4}{9} \\
+	\end{align*}
+
+Similarly for $P(d_2 \mid E)$, we have
+	\begin{align*}
+		P(d_2 \mid E) & = \frac{P(d_2 \cap E)}{P(E)}\\
+	\end{align*}
+Here, 
+	$$ P(d_2 \cap E) = P(d_2) \cdot P(E \mid d_2) = \frac{1}{3} \cdot \frac{6}{10} = \frac{1}{5}$$
+	
+Plugging this back into $P(d_2 \mid E)$ we now have
+	\begin{align*}
+		P(d_2 \mid E) & = \frac{1/5}{3/5} = \frac{1}{3}
+	\end{align*}
+	
+	
+Finally for $P(d_3 \mid E)$, we have
+	$$P(d_3 \mid E) = \frac{P(d_3 \cap E)}{P(E)}$$
+Here, 
+	$$P(d_3 \cap E) = P(d_3) \cdot P(E \mid d_3) = \frac{1}{3} \cdot \frac{4}{10} = \frac{2}{15}$$
+	
+Plugging this back into $P(d_3 \mid E)$ we now have
+	\begin{align*}
+		P(d_3 \mid E) & = \frac{2/15}{3/5} = \frac{2}{9}
+	\end{align*}
+
+\section*{Question 7: Section 4.1 \#22}
+
+For a collection of $n=65$ coins, one coin has two heads while the rest are fair. A coin is then selected at random and tossed 6 times. Let $E$ be the event that an unfair coin is chosen and $F$ the event that a heads turns up 6 times in a row.
+
+Here, $P(F)$ will be given by
+	\begin{align*}
+		P(F) & = P(\text{6H and fair}) + P(\text{6H and unfair})\\
+		& = \Big(\frac{1}{2}\Big)^6\cdot \frac{64}{65} + 1 \cdot \frac{1}{65} \\
+		& = \frac{2}{65}
+	\end{align*}
+
+
+For the intersection of the two events, we have that
+$$P(E \cap F) = P(E) \cdot P(F \mid E) = 1/65 \cdot 1 = 1/65$$
+
+Plugging these in gives us
+	\begin{align*}
+		P(E \mid F) & = \frac{P(E \cap F)}{P(F)} \\
+		& = \frac{1/65}{2/65} \\
+		& = \frac{1}{2}
+	\end{align*}
+
+\section*{Question 8: Section 4.1 \#24}
+
+\textbf{Proposition:} For a fair coin tossed $n$ times, the conditional probability of a head on any specified trial, given a total of $k$ heads over the $n$ trials, is $k/n$ for $k > 0$.
+
+\textbf{Proof}
+
+Let $E$ be the event that you get a head on the $i$-th trial and $F$ be the event that you toss $k$ heads in $n$ trials. Then we can express $P(F)$ as a Binomial Distribution, where the random variable $X$ is the number of times have heads when tossing a coin $n$ times:
+$$P(F) = P(X=k) = {n \choose k} p^k \cdot q^{n-k}$$
+Since $p = q = 1/2$, we can rewrite it as
+$$P(F) = {n \choose k} \Big(\frac{1}{2}\Big)^n$$
+Next we know the intersection of the two events involves the probability of having a head on the $i$-th trial multiplied by the probability of getting $k-1$ heads on the remaining $n-1$ tosses. Thus we have
+	\begin{align*}
+		P(E \cap F) & = \frac{1}{2} \cdot {n-1 \choose k-1}\Big(\frac{1}{2}\Big)^{n-1} \\
+		& = \Big(\frac{1}{2}\Big)^n \cdot {n-1 \choose k-1}
+	\end{align*}
+Combining these, we have
+\begin{align*}
+		P(E \mid F) & = \frac{P(E \cap F)}{P(F)} \\
+		& = \frac{\Big(\frac{1}{2}\Big)^n \cdot {n-1 \choose k-1}}{ \Big(\frac{1}{2}\Big)^n \cdot {n \choose k}} \\
+		& = \frac{(n-1)!}{(k-1)! (n-1-(k+1))!}\cdot \frac{k! (n-k)!}{n!} \\
+		& = \frac{(n-1)! \cdot k! \cdot (n-k)!}{(k-1)! \cdot(n-k)! \cdot n!} \\
+		& = \frac{(n-1)! \cdot k!}{(k-1)! \cdot n!} \\
+		& = \frac{k}{n}
+	\end{align*} 
+\QEDA
+
+
+\end{document} 

@@ -1,0 +1,258 @@
+% ======================= Pre-Amble =========================
+
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format 
+                     						%imports package {article} and specify option(s) [11pt, oneside]
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.                                        
+
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for rotated page geometry
+
+\usepackage[parfill]{parskip}    		        % Activate to begin paragraphs with an empty line rather than an indent
+
+\usepackage[hidelinks]{hyperref}                % Allows for clickable references
+
+%American Mathematics Society packages
+\usepackage{amsmath}	   %math
+\usepackage{amssymb}       %symbols
+\usepackage{amsthm}          %theorems
+
+%Graphics
+\usepackage{graphicx}
+\usepackage[usenames, dvipsnames]{color}     % font colour:    \textcolor{<colour>}{text}
+      									%highlight text:  \colorbox{<color>}{text}
+									
+									%list of colours: https://www.sharelatex.com/learn/Using_colours_in_LaTeX
+
+%Images		                
+\graphicspath{ {images/} }                          %directory that your images are located in within your current directory
+	
+
+%Footnote Spacing
+\setlength{\footnotesep}{0.4cm}                  %specify spacing b/w footnotes
+\setlength{\skip\footins}{0.6cm}                    % space b/w footnotes and textbody
+
+%Table
+\usepackage[none]{hyphenat}                    % Stops breaking-up words in a table (i.e. no hyphens)
+                                                               
+
+\usepackage{array}   
+\newcolumntype{x}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}       %center fixed column width: x{<len>}                      
+\newcolumntype{$}{>{\global\let\currentrowstyle\relax}}                                                   % let us apply things (e.g. bold/italicize) to entire row            
+\newcolumntype{^}{>{\currentrowstyle}}
+\newcommand{\rowstyle}[1]{\gdef\currentrowstyle{#1} #1\ignorespaces}
+
+%Bibliography
+\usepackage[numbers,sort&compress]{natbib}   %for multiple references: sorts  (i.e. [1,2] NOT [2, 1] )
+                                           				  %                                     compresses (i.e. [1-3] )
+\usepackage[nottoc]{tocbibind}                            %add bibliography to table of contents
+
+%Diagrams
+\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+	
+
+\usepackage{dirtytalk}    %quotations: use \say  
+
+\usepackage{caption}
+\captionsetup[figure]{labelfont=bf}    %make figure labels boldface
+\captionsetup[table]{labelfont=bf}     %make table labels boldface
+
+%Bullets
+\usepackage{enumerate}     %specify type of enumeration: \being{enumerate}[<type of enumeration>]
+
+%QED
+\newcommand*{\QEDA}{\hfill\ensuremath{\blacksquare}}         %make qed filled square:    \QEDA
+\newcommand*{\QEDB}{\hfill\ensuremath{\square}}               %make qed empty square: \QEDB 
+
+%Header and Footer
+\usepackage{fancyhdr}
+\usepackage{lastpage}      %ensures you can reference LastPage (i.e. Page 2 of 10)
+
+
+%=========== Header & Footer =========================
+
+\pagestyle{fancy}
+\lhead{Stephanie Knill} 		% controls the left corner of the header
+\chead{} 					% controls the center of the header
+\rhead{} 					% controls the right corner of the header
+\lfoot{} 					% controls the left corner of the footer
+\cfoot{Page~\thepage\ of \pageref{LastPage}} 				% controls the center of the footer
+												%Page~\thepage\  if just want Page x
+\rfoot{}			 		% controls the right corner of the footer
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% ======================== Document ======================
+\begin{document}
+
+
+\title{MATH 302 --- Assignment 1 \\
+\line(1,0){360} \\              %(slope x, y){length of line}
+\vspace{0.2cm}}
+\author{
+Stephanie Knill \\
+54882113 \\
+Due: January 20, 2015}
+
+\date{}                   % Activate:  display a given date (e.g. {August 4} ) or no date (empty {} )
+                                    %No activate: display current date
+\maketitle
+
+\thispagestyle{empty}                   %Remove header from this (first) page. Change empty -> plain to keep numbering
+
+
+% ================= Questions ================
+
+\section*{Question 1}
+
+Let a die be loaded such that the probability of each face turning up is proportional to the number of dots on that. That is, the probability of rolling each number is given by $P(1)=x, P(2)=2x, P(3)=3x, \ldots , P(6)=6x$. Since $P(1) + P(2) + \cdots + P(6) = 1$, we have
+\begin{align*}
+x+2x+3x+4x+5x+6x & = 1 \\
+21x & = 1 \\
+x & = \frac{1}{21}
+\end{align*}
+
+Therefore the probability of getting an even number in one throw is given by
+\begin{align*}
+P(even) & = P(2)+P(4)+P(6) \\
+& = 2x+4x+6x \\
+& = 12x \\
+& = 12 \cdot \frac{1}{21} \\
+& = \frac{4}{7}
+\end{align*}
+
+
+\section*{Question 2}
+
+Let $A$ and $B$ be events such that $P(A \cap B) = 1/4, P(\overline{A}) =1/3$, and $P(B)=1/2$. Then
+\begin{align*}
+P(A) & = U - \overline{A} \\
+& = 1 - \frac{1}{3} \\
+& = \frac{2}{3} \\
+\end{align*}
+Therefore
+\begin{align*}
+P(A \cup B) & = P(A) + P(B) - P(A \cap B) \\
+& = \frac{2}{3} + \frac{1}{2} - \frac{1}{4} \\
+& = \frac{11}{12}
+\end{align*}
+
+\section*{Question 3}
+
+Let us assume that whether a bill passes the house or senate is \textit{not} a stepwise process (i.e. a bill does not have to pass the senate to reach the house, and vice versa). Then let the probability pass the senate be $P(S)=0.8$, probability pass the house $P(H) = 0.6$, and the probability pass at least one be $P(S \cup H) =0.9$. Thus the probability that the bill passes both is given by
+\begin{align*}
+P(S \cap H) & = P(S \cup H) - P(S \setminus H) - P(H \setminus S) \\
+& = P(S \cup H) - [P(S \cup H) - P(H)] - [P(S \cup H) - P(S)] \\
+& = -P(S \cup H) + P(H) + P(S) \\
+& = - 0.9 + 0.6 + 0.8 \\
+& = 0.5
+\end{align*}
+
+\section*{Question 4}
+
+\begin{enumerate}[ (a)]           
+    \item $P(Ace) = \frac{4}{52} = \frac{1}{13}$
+    \item $P(2$ $Heads) = \frac{1}{2} \cdot \frac{1}{2} = \frac{1}{4}$
+    \item $P(2$ Sixes$) = \frac{1}{6} \cdot \frac{1}{6} = \frac{1}{36}$        
+\end{enumerate}
+
+
+\section*{Question 5}
+\begin{enumerate}[ (a)]
+	\item \textit{\textbf{Proof:}} We will show by induction that, for all $n \in \mathbb{N}$
+	\begin{align}
+	P(A_1 \cup \ldots \cup A_n) \leq P(A_1) + \ldots + P(A_n)
+	\label{eq1}
+	\end{align}
+	\textit{\textbf{Base Case:}} when $n=1$, the left hand side of (\ref{eq1}) is  $P(A_1)$ and the right hand side is $P(A_1)$, so both sides are equal and (\ref{eq1}) is true for $n=1$.
+	
+	\textit{\textbf{Induction Step:}} let $k \in \mathbb{N}$ be given and suppose (\ref{eq1}) is true for $n=k$. Then
+	
+	$$\bigcup_{n=1}^k P(A_n) \leq P(A_1) + \ldots + P(A_n) = \sum_{n=1}^k P(A_n)$$
+	
+	holds true. Then we can show the left hand side can be expressed as
+	
+	$$\bigcup_{n=1}^{k+1} P(A_n) = \bigcup_{n=1}^{k} P(A_n) + P(A_{k+1})-P(A_{k+1} \bigcap_{n=1}^{k} A_n)$$
+	
+	and the right hand side as
+	
+	$$\sum_{n=1}^{k+1} P(A_n) = \sum_{n=1}^k P(A_n) + P(A_{k+1})$$
+	
+	Since $P(A_{k+1}) - P(A_{k+1} \bigcap_{n=1}^k A_n) \leq P(A_{k+1})$ and $\bigcup_{n=1}^{k+1} P(A_n) \leq \sum_{n=1}^{k+1} P(A_n)$ by the induction step, then (\ref{eq1}) hold true for $n=k+1$, and the proof of induction step is complete.
+	
+	\textit{\textbf{Conclusion:}} By the principle of induction, (\ref{eq1}) is true for all $n \in \mathbb{N}$. \QEDA
+	
+	\item \textit{\textbf{Proof:}} We will show that, for events $A$ and $B$
+	\begin{align}
+	P(A \cap B) \geq P(A) + P(B) -1
+	\label{eq2}
+	\end{align}
+	
+	We can show that the left hand side is given by
+	\begin{align*}
+	P(A \cap B) & = P(A \cup B) - P(A \setminus B) - P(B \setminus A) \\
+	& = P(A \cup B) - [P(A \cup B) - P(B)] - [P(A \cup B) - P(A)] \\
+	& = -P(A \cup B) + P(A) + P(B)
+	\end{align*}
+	Since $U=1$, we have that
+	\begin{align*}
+	-P(A \cup B) & \geq -1 = -U \\
+	-P(A \cup B) + P(A) + P(B) & \geq -1 + P(A) + P(B)
+	\end{align*}
+	Therefore (\ref{eq2}) holds true for events $A$ and $B$. \QEDA
+\end{enumerate}
+
+\section*{Question 6}
+
+Let $A, B,$ and $C$ be any three events. Then
+\begin{align*}
+	P(A \cup B \cup C) & = P(A \cup (B \cup C)) \\
+	& = P(A) + P(B \cup C) - P(A \cap (B \cup C)) \\
+	& = P(A) + [P(B) + P(C) - P(B \cap C)] - P(A \cap B) \cup P(A \cap C) \\
+	& = P(A) + P(B) + P(C) - P(B \cap C) \\
+	& \qquad - [P(A \cap B) + P(A \cap C) - P(A \cap B \cap A \cap C)] \\
+	& = P(A) + P(B) + P(C) \\
+	& \qquad - P(A \cap B) - P(B \cap C) - P(A \cap C) \\ 
+	& \qquad + P(A \cap B \cap C) \\
+\end{align*}
+
+\section*{Question 7}
+
+Since $m(\omega) = \frac{1}{n}, \forall w \in \Omega$, we can compute the infinite limit  of the distribution function as follows
+\begin{align}
+\lim_{n\to\infty} \sum_{w=1}^n m(\omega) & = \lim_{n\to\infty} \sum_{w=1}^n \frac{1}{n} \nonumber \\ 
+&= 0 + 0 + \ldots \nonumber \\
+& = 0 \label{eq3}
+\end{align}
+However, by definition the distribution function $m$ whose domain is $\Omega$ must satisfy
+\begin{enumerate}
+	\item $m(\omega) \geq 0, \forall \omega \in \Omega,$ and
+	\item $\sum_{w \in \Omega} m(\omega) = 1$
+\end{enumerate}
+
+Here, (\ref{eq3}) is in direct contradiction with the second property. Therefore a uniform distribution function cannot be defined on a countably infinite sample space.
+
+\section*{Question 8}
+
+The second card will either be higher, lower, or same rank as the first card. Therefore the universal set of the possible second card drawn is given by
+$$U = 1 = P(higher) + P(lower) + P(same)$$
+Since $P(higher) = P(lower)$, we an rewrite it as
+\begin{align*}
+1 & = 2 \cdot P(higher) + P(same) \\
+P(higher) & = \frac{1}{2} \cdot (1-P(same))
+\end{align*}
+For two cards to be of equal rank, they must be of the same type. For example, the 2 of spades and 2 of diamonds are of the same rank. Thus, in a deck of 52 cards composed of 4 suits, the probability of the second card being the same rank is given by
+$$P(same) = \frac{3}{51}$$
+Therefore the probability that the second card is higher than the first is
+\begin{align*}
+P(higher) & = \frac{1}{2} \cdot \Big(1- \frac{3}{51}\Big) \\
+& = \frac{1}{2} \cdot \frac{48}{51} \\
+& = \frac{24}{51}
+\end{align*}
+
+
+
+
+
+\end{document} 
