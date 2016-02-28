@@ -1,3 +1,3 @@
 #Assignment 5
 
-Discrete: Expected Value & Variance
+Discrete: expected value & variance
