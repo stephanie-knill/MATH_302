@@ -135,7 +135,7 @@ In a class of 80 students, a professor calls on 1 student chosen at random for a
 		& = e^{-\lambda} \cdot \frac{\lambda^j}{j!} \\
 		& = e^{-\frac{2}{5}} \cdot \frac{(2/5)^j}{j!} \\
 	\end{align*}
-	Thus for the probability for a given student called upon more than twice
+	Similarly for the probability a given student is called upon more than twice
 	\begin{align*}
 		P(X> 2) & \approx 1 - P(X=0) - P(X=1) \\
 		& \approx 1 - e^{-\frac{2}{5}} \cdot \frac{(2/5)^0}{0!} - e^{-2/5} \cdot \frac{(2/5)^1}{1!} \\
@@ -148,11 +148,22 @@ In a class of 80 students, a professor calls on 1 student chosen at random for a
 
 \section*{Question 2: Section 5.1 \#23}
 
-\hl{I have on ducking clue....}
+For a certain experiment, the Poisson distribution with parameter $\lambda = m$ has been assigned. To find the most probable outcome for this experiment, let us first compute the ratio of successive probabilities:
+\begin{align*}
+	\frac{P(X=k+1)}{P(X=k)} & = \frac{e^{-\lambda} \cdot \lambda^{k+1}}{(k+1)!} \cdot \frac{k!}{e^{-\lambda} \cdot \lambda^k} \\
+	& = \frac{\lambda}{k+1}
+\end{align*}
+For $k=\lambda -1$, we have that
+$$\frac{P(X=(\lambda -1)+1)}{P(X=\lambda -1)} = \frac{P(X=\lambda)}{P(X=\lambda -1)} = \frac{\lambda}{(\lambda -1)+1} = 1$$
+Thus the successive probabilities $k=\lambda -1$ to $k=\lambda$ are equal, which means the most probable (maximal) outcome of the experiment $k\in \mathbb{Z}$ lies within the range $\lambda -1 \leq k \leq \lambda$. Since $k$ is an integer, the most probable outcome is $k = \left \lfloor{\lambda}\right \rfloor$
+
+Two most probable values for $k$ can only occur if $\lambda$ is also an integer. In this case, we have two integer values for $k$ that lie within the most probable range. In addition to the maximal outcome $k = \left \lfloor{\lambda}\right \rfloor$, we also have the other integer value $k = \left \lfloor{\lambda -1}\right \rfloor$
+
+
 
 \section*{Question 3: Section 5.1 \#26}
 
-Let the random variable $X$ be the number of hits on a square. Let the total number of hits be $n=537$ and the probability of being hit $p=\frac{1}{576}$. Assuming the hits were purely random, we can use the Poisson approximation with $\lambda = np = 537 \cdot \frac{1}{576} = \frac{537}{576}$ to find the probability that a particular square would have exactly $k$ hits:
+Let the random variable $X$ be the number of hits on a square. Let the total number of hits be $n=537$ and the probability of being hit $p=\frac{1}{576}$. Assuming the hits are purely random, we can use the Poisson approximation with $\lambda = np = 537 \cdot \frac{1}{576} = \frac{537}{576}$ to find the probability that a particular square would have exactly $k$ hits:
 \begin{align*}
 	P(X=k) & \approx Pois(\frac{537}{576}) \\
 	& \approx e^{-\frac{537}{576}} \cdot \frac{\frac{537}{576}^k}{k!}
@@ -224,7 +235,7 @@ Let us choose a real number $X$ from the interval [2,10] with a density function
 $$f(x) = Cx,$$
 where $C$ is a constant.
 \begin{enumerate}[(a)]
-	\item To compute $C$, we will use the fact that the 
+	\item To compute $C$, we will use the fact that 
 	$$\int_a^b f(x)  \; \mathrm{d}x = 1$$	
 	Here, $[a,b] = [2,10]$ so we have
 	\begin{align*}
@@ -237,7 +248,8 @@ where $C$ is a constant.
 	\item The probability of an event $E$ that is a subinterval $[a,b]$ of [2.10] is given by
 	\begin{align*}
 		P(E) & = \int_a^b f(x) \; \mathrm{d}x \\
-		& = \frac{1}{16} x^2 \; \Big|_{x=a}^b \\
+		& = \int_a^b \frac{1}{48}x \; \mathrm{d}x \\
+		& = \frac{1}{96} x^2 \; \Big|_{x=a}^b \\
 		& = \frac{b^2-a^2}{96}
 	\end{align*}
 	
@@ -293,11 +305,11 @@ Since $\alpha$ is known, let us compute the last remaining unknown, $l_1$. Using
 Substituting back into $P_i$ gives us the desired equation
 \begin{align*}
 	P_i & = \frac{1-\alpha}{1-\alpha^M} \cdot \frac{1-\alpha^i}{1-\alpha} \\
-	& = \frac{1-\alpha^i}{1-\alpha^M}
+	& = \frac{\alpha^i-1}{\alpha^M-1}
 \end{align*}
 Here, we have $i=10$, $M=15$, and $\alpha = \frac{1-p}{p} = \frac{2/3}{1/3} = 2$. Plugging this in
 \begin{align*}
-	P_i = \frac{2^10-1}{2^15-1} \approx 0.0312
+	P_i = \frac{2^{10}-1}{2^{15}-1} \approx 0.0312
 \end{align*}
 gives us the probability that player $A$ wins all his or her adversary's money to be approximately 3\%.
 
